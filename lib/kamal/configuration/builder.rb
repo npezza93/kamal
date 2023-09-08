@@ -15,6 +15,10 @@ class Kamal::Configuration::Builder
     @options["multiarch"] != false
   end
 
+  def platform
+    "linux/#{@options['arch']}" unless multiarch?
+  end
+
   def local?
     !!@options["local"]
   end
@@ -24,7 +28,7 @@ class Kamal::Configuration::Builder
   end
 
   def cached?
-    !!@options["cache"]
+    !!@options["cache"].compact_blank
   end
 
   def args

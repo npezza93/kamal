@@ -9,12 +9,16 @@ class Kamal::Commands::Builder::Native < Kamal::Commands::Builder::Base
 
   def push
     combine \
-      docker(:build, *build_options, build_context),
+      docker(:build, *platform, *build_options, build_context),
       docker(:push, config.absolute_image),
       docker(:push, config.latest_image)
   end
 
   def info
     # No-op on native
+  end
+
+  def platform
+    ["--platform", config.builder.platform] if config.builder.platform
   end
 end

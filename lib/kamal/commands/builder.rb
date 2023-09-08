@@ -42,6 +42,9 @@ class Kamal::Commands::Builder < Kamal::Commands::Base
     @multiarch_remote ||= Kamal::Commands::Builder::Multiarch::Remote.new(config)
   end
 
+  def platform
+    "linux/#{remote_arch}"
+  end
 
   def ensure_local_dependencies_installed
     if name.native?
