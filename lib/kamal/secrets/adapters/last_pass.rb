@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Secrets::Adapters::LastPass < Kamal::Secrets::Adapters::Base
   private
     def login(account)

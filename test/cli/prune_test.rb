@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "cli_test_case"
 
 class CliPruneTest < CliTestCase

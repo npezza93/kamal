@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_support/duration"
 require "time"
 require "base64"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Validator
   attr_reader :config, :example, :context
 

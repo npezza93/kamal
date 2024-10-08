@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Volume
   attr_reader :host_path, :container_path
   delegate :argumentize, to: Kamal::Utils

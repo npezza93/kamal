@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Commands::App::Containers
   DOCKER_HEALTH_LOG_FORMAT    = "'{{json .State.Health}}'"
 

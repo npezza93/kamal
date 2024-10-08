@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Validator::Env < Kamal::Configuration::Validator
   SPECIAL_KEYS = [ "clear", "secret", "tags" ]
 

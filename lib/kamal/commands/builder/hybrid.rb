@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Builder::Hybrid < Kamal::Commands::Builder::Remote
   def create
     combine \

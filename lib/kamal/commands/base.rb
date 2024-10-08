@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Commands
   class Base
     delegate :sensitive, :argumentize, to: Kamal::Utils

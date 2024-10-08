@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::App < Kamal::Commands::Base
   include Assets, Containers, Execution, Images, Logging, Proxy
 

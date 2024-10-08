@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Encode an env hash as a string where secret values have been looked up and all values escaped for Docker.
 class Kamal::EnvFile
   def initialize(env)

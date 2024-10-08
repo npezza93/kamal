@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "uri"
 
 class Kamal::Cli::Build::Clone

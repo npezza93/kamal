@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Ssh
   LOGGER = ::Logger.new(STDERR)
 

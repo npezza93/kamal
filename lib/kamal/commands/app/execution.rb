@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Commands::App::Execution
   def execute_in_existing_container(*command, interactive: false, env:)
     docker :exec,

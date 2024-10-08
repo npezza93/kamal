@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Accessory < Kamal::Commands::Base
   attr_reader :accessory_config
   delegate :service_name, :image, :hosts, :port, :files, :directories, :cmd,

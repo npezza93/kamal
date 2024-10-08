@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Validator::Registry < Kamal::Configuration::Validator
   STRING_OR_ONE_ITEM_ARRAY_KEYS = [ "username", "password" ]
 

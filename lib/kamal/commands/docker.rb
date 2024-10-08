@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Docker < Kamal::Commands::Base
   # Install Docker using the https://github.com/docker/docker-install convenience script.
   def install

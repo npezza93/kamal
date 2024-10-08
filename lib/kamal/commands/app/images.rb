@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Commands::App::Images
   def list_images
     docker :image, :ls, config.repository

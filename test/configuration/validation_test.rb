@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 class ConfigurationValidationTest < ActiveSupport::TestCase
   test "unknown root key" do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Auditor < Kamal::Commands::Base
   attr_reader :details
 

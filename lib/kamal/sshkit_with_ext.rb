@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "sshkit"
 require "sshkit/dsl"
 require "net/scp"

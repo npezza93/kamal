@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal
   class ConfigurationError < StandardError; end
 end

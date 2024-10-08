@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Builder
   include Kamal::Configuration::Validation
 

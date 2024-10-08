@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "thor"
 require "kamal/sshkit_with_ext"
 

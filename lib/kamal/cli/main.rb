@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Main < Kamal::Cli::Base
   desc "setup", "Setup all accessories, push the env, and deploy app to servers"
   option :skip_push, aliases: "-P", type: :boolean, default: false, desc: "Skip image build and push"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Secrets::Dotenv::InlineCommandSubstitution
   class << self
     def install!

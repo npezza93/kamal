@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Secrets::Adapters::Base
   delegate :optionize, to: Kamal::Utils
 

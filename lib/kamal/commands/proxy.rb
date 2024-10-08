@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Proxy < Kamal::Commands::Base
   delegate :argumentize, :optionize, to: Kamal::Utils
 

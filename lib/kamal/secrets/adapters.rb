@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_support/core_ext/string/inflections"
 module Kamal::Secrets::Adapters
   def self.lookup(name)

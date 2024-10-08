@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Hook < Kamal::Commands::Base
   def run(hook)
     [ hook_file(hook) ]

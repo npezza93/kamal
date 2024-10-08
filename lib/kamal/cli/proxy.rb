@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Proxy < Kamal::Cli::Base
   desc "boot", "Boot proxy on servers"
   def boot

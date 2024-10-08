@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::App::Boot
   attr_reader :host, :role, :version, :barrier, :sshkit
   delegate :execute, :capture_with_info, :capture_with_pretty_json, :info, :error, :upload!, to: :sshkit

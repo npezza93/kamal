@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Commands::App::Assets
   def extract_assets
     asset_container = "#{role.container_prefix}-assets"

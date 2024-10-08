@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Commands::App::Logging
   def logs(version: nil, timestamps: true, since: nil, lines: nil, grep: nil, grep_options: nil)
     pipe \

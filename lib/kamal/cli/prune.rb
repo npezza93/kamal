@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Prune < Kamal::Cli::Base
   desc "all", "Prune unused images and stopped containers"
   def all

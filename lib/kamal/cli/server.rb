@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Server < Kamal::Cli::Base
   desc "exec", "Run a custom command on the server (use --help to show options)"
   option :interactive, type: :boolean, aliases: "-i", default: false, desc: "Run the command interactively (use for console/bash)"

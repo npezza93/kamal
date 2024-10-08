@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::App::PrepareAssets
   attr_reader :host, :role, :sshkit
   delegate :execute, :capture_with_info, :info, to: :sshkit

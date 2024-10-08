@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "concurrent/ivar"
 
 class Kamal::Cli::Healthcheck::Barrier

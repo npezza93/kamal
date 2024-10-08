@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Lock < Kamal::Cli::Base
   desc "status", "Report lock status"
   def status

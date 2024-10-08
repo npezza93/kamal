@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Cli
   class BootError < StandardError; end
   class HookError < StandardError; end

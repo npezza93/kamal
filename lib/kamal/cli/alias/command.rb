@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Alias::Command < Thor::DynamicCommand
   def run(instance, args = [])
     if (_alias = KAMAL.config.aliases[name])

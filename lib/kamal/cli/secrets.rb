@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Secrets < Kamal::Cli::Base
   desc "fetch [SECRETS...]", "Fetch secrets from a vault"
   option :adapter, type: :string, aliases: "-a", required: true, desc: "Which vault adapter to use"

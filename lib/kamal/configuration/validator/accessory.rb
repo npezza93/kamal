@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Validator::Accessory < Kamal::Configuration::Validator
   def validate!
     super

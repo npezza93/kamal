@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commander::Specifics
   attr_reader :primary_host, :primary_role, :hosts, :roles
   delegate :stable_sort!, to: Kamal::Utils

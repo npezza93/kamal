@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Configuration::Validator::Configuration < Kamal::Configuration::Validator
   private
     def allow_extensions?

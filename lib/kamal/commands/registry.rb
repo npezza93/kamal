@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Registry < Kamal::Commands::Base
   delegate :registry, to: :config
 

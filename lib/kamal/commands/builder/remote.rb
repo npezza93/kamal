@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Commands::Builder::Remote < Kamal::Commands::Builder::Base
   def create
     chain \

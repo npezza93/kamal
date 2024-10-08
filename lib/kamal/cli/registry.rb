@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::Registry < Kamal::Cli::Base
   desc "login", "Log in to registry locally and remotely"
   option :skip_local, aliases: "-L", type: :boolean, default: false, desc: "Skip local login"

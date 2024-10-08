@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Kamal::Commands::App::Proxy
   delegate :proxy_container_name, to: :config
 

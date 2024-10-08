@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Kamal::Cli::App < Kamal::Cli::Base
   desc "boot", "Boot app on servers (or reboot app if already running)"
   def boot
