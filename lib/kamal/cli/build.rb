@@ -5,11 +5,12 @@ class Kamal::Cli::Build < Kamal::Cli::Base
 
   desc "deliver", "Build app and push app image to registry then pull image on servers"
   def deliver
-    push
-    pull
+    invoke :push
+    invoke :pull
   end
 
   desc "push", "Build and push app image to registry"
+  option :output, type: :string, default: "registry", banner: "export_type", desc: "Exported type for the build result, and may be any exported type supported by 'buildx --output'."
   def push
     cli = self
 
@@ -49,7 +50,7 @@ class Kamal::Cli::Build < Kamal::Cli::Base
         end
 
         # Get the command here to ensure the Dir.chdir doesn't interfere with it
-        push = KAMAL.builder.push
+        push = KAMAL.builder.push(cli.options[:output])
 
         KAMAL.with_verbosity(:debug) do
           Dir.chdir(KAMAL.config.builder.build_directory) { execute *push }
@@ -60,14 +61,16 @@ class Kamal::Cli::Build < Kamal::Cli::Base
 
   desc "pull", "Pull app image from registry onto servers"
   def pull
-    if (first_hosts = mirror_hosts).any?
-      #  Pull on a single host per mirror first to seed them
-      say "Pulling image on #{first_hosts.join(", ")} to seed the #{"mirror".pluralize(first_hosts.count)}...", :magenta
-      pull_on_hosts(first_hosts)
-      say "Pulling image on remaining hosts...", :magenta
-      pull_on_hosts(KAMAL.hosts - first_hosts)
-    else
-      pull_on_hosts(KAMAL.hosts)
+    forward_local_registry_port do
+      if (first_hosts = mirror_hosts).any?
+        #  Pull on a single host per mirror first to seed them
+        say "Pulling image on #{first_hosts.join(", ")} to seed the #{"mirror".pluralize(first_hosts.count)}...", :magenta
+        pull_on_hosts(first_hosts)
+        say "Pulling image on remaining hosts...", :magenta
+        pull_on_hosts(KAMAL.hosts - first_hosts)
+      else
+        pull_on_hosts(KAMAL.hosts)
+      end
     end
   end
 
@@ -108,6 +111,41 @@ class Kamal::Cli::Build < Kamal::Cli::Base
     end
   end
 
+  desc "dev", "Build using the working directory, tag it as dirty, and push to local image store."
+  option :output, type: :string, default: "docker", banner: "export_type", desc: "Exported type for the build result, and may be any exported type supported by 'buildx --output'."
+  def dev
+    cli = self
+
+    ensure_docker_installed
+
+    docker_included_files = Set.new(Kamal::Docker.included_files)
+    git_uncommitted_files = Set.new(Kamal::Git.uncommitted_files)
+    git_untracked_files = Set.new(Kamal::Git.untracked_files)
+
+    docker_uncommitted_files = docker_included_files & git_uncommitted_files
+    if docker_uncommitted_files.any?
+      say "WARNING: Files with uncommitted changes will be present in the dev container:", :yellow
+      docker_uncommitted_files.sort.each { |f| say "  #{f}", :yellow }
+      say
+    end
+
+    docker_untracked_files = docker_included_files & git_untracked_files
+    if docker_untracked_files.any?
+      say "WARNING: Untracked files will be present in the dev container:", :yellow
+      docker_untracked_files.sort.each { |f| say "  #{f}", :yellow }
+      say
+    end
+
+    with_env(KAMAL.config.builder.secrets) do
+      run_locally do
+        build = KAMAL.builder.push(cli.options[:output], tag_as_dirty: true)
+        KAMAL.with_verbosity(:debug) do
+          execute(*build)
+        end
+      end
+    end
+  end
+
   private
     def connect_to_remote_host(remote_host)
       remote_uri = URI.parse(remote_host)
@@ -143,6 +181,16 @@ class Kamal::Cli::Build < Kamal::Cli::Base
         execute *KAMAL.builder.clean, raise_on_non_zero_exit: false
         execute *KAMAL.builder.pull
         execute *KAMAL.builder.validate_image
+      end
+    end
+
+    def forward_local_registry_port(&block)
+      if KAMAL.config.registry.local?
+        Kamal::Cli::PortForwarding.
+          new(KAMAL.hosts, KAMAL.config.registry.local_port).
+          forward(&block)
+      else
+        yield
       end
     end
 end
